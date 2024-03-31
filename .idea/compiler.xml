@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="service-reg" />
+        <module name="item" />
+        <module name="address" />
+        <module name="order-deatels" />
+        <module name="restaurant" />
+        <module name="food-cart" />
+        <module name="bill" />
+        <module name="category" />
+        <module name="gateway" />
+        <module name="customer" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="address" options="-parameters" />
+      <module name="bill" options="-parameters" />
+      <module name="category" options="-parameters" />
+      <module name="customer" options="-parameters" />
+      <module name="food-cart" options="-parameters" />
+      <module name="gateway" options="-parameters" />
+      <module name="item" options="-parameters" />
+      <module name="order-deatels" options="-parameters" />
+      <module name="restaurant" options="-parameters" />
+      <module name="service-reg" options="-parameters" />
+    </option>
+  </component>
+</project>
