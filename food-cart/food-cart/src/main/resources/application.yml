@@ -1,0 +1,29 @@
+eureka:
+    client:
+        fetch-register: true
+        register-with-eureka: true
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka/
+logging:
+    level:
+        org:
+            hibernate: DEBUG
+server:
+    port: 7005
+spring:
+    application:
+        name: food-cart
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        password: raju
+        url: jdbc:mysql://localhost:3306/food
+        username: root
+    jdbc:
+        show-sql: true
+    jpa:
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQLDialect
+---
