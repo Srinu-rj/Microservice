@@ -1,5 +1,6 @@
 package com.bill.bill.entity;
 
+import com.customer.customer.entity.Customer;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,7 +23,7 @@ public class Bill {
     public Double totalCost;
     public Integer totalItem;
 
-//
+
 //    @OneToOne(cascade = CascadeType.ALL)
-//    public OrderDetails order;
+//    public Customer address;
 }

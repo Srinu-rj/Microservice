@@ -4,7 +4,9 @@ import com.address.address.entuti.Address;
 import com.address.address.repo.AddressRepo;
 import com.address.address.service.AddressServices;
 import lombok.RequiredArgsConstructor;
+import org.springframework.jdbc.support.CustomSQLErrorCodesTranslation;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,6 +16,7 @@ import java.util.Optional;
 public class AddressServicesImpl implements AddressServices {
 
     private final AddressRepo addressRepo;
+    private final RestTemplate restTemplate;
 
     @Override
     public Address addAddress(Address updateAddress) {
@@ -22,6 +25,7 @@ public class AddressServicesImpl implements AddressServices {
 
     @Override
     public List<Address> getAddress() {
+
         return addressRepo.findAll();
     }
 
