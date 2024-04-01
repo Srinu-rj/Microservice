@@ -21,8 +21,43 @@ spring:
         - id: address
           uri: lb://address
           predicates:
-            - Path=/api/employee/**
+            - Path=/api/address/**
+
         - id: bill
           uri: lb://bill
           predicates:
-            - Path=/api/department/**
+            - Path=/api/bill/**
+
+        - id: category
+          uri: lb://category
+          predicates:
+            - Path=/api/category/**
+
+        - id: customer
+          uri: lb://customer
+          predicates:
+            - Path=/api/customer/**
+
+        - id: food-cart
+          uri: lb://food-cart
+          predicates:
+            - Path=/api/food/**
+
+        - id: item
+          uri: lb://item
+          predicates:
+            - Path=/api/item/**
+
+        - id: order-deatels
+          uri: lb://order-deatels
+          predicates:
+            - Path=/api/order/**
+
+        - id: restaurant
+          uri: lb://restaurant
+          predicates:
+            - Path=/api/restaurant/**
+
+---
+
+
