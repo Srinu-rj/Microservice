@@ -1,6 +1,5 @@
 package com.bill.bill.entity;
 
-import com.customer.customer.entity.Customer;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,10 +1,10 @@
-package com.erukaserver.servicereg;
+package com.dailycodebuffer.configserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ServiceRegApplicationTests {
+class ConfigServerApplicationTests {
 
 	@Test
 	void contextLoads() {

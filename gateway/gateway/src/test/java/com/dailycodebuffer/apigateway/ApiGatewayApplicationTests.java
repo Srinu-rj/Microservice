@@ -1,10 +1,10 @@
-package com.conf.configserv;
+package com.dailycodebuffer.apigateway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ConfigServApplicationTests {
+class ApiGatewayApplicationTests {
 
 	@Test
 	void contextLoads() {

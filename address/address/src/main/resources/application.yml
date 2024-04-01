@@ -1,14 +1,11 @@
-eureka:
-    client:
-        fetch-register: true
-        register-with-eureka: true
-        serviceUrl:
-            defaultZone: http://localhost:8761/eureka/
 server:
     port: 7009
+
 spring:
     application:
         name: address
+    config:
+        import: "optional:config-serv:http://localhost:8088"
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
         password: raju
@@ -22,4 +19,3 @@ spring:
         properties:
             hibernate:
                 dialect: org.hibernate.dialect.MySQLDialect
----
