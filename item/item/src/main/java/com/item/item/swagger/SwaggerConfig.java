@@ -14,7 +14,7 @@ public class SwaggerConfig {
 	@Bean
 	public OpenAPI springShopOpenAPI() {
 		return new OpenAPI()
-				.info(new Info().title("Restaurant Application")
+				.info(new Info().title("Item-Service")
 						.description("Backend APIs for E-Commerce app")
 						.version("v1.0.0").contact(new Contact().name("srinu")
 								.url("https://github.com/Srinu-rj")

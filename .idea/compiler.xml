@@ -14,17 +14,23 @@
         <module name="restaurant" />
         <module name="food-cart" />
         <module name="bill" />
+        <module name="config-serv" />
         <module name="category" />
         <module name="gateway" />
         <module name="customer" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="config-server" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="address" options="-parameters" />
       <module name="bill" options="-parameters" />
       <module name="category" options="-parameters" />
+      <module name="config-serv" options="-parameters" />
+      <module name="config-server" options="-parameters" />
       <module name="customer" options="-parameters" />
       <module name="food-cart" options="-parameters" />
       <module name="gateway" options="-parameters" />

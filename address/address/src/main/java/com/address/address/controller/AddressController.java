@@ -3,7 +3,6 @@ package com.address.address.controller;
 import com.address.address.entuti.Address;
 import com.address.address.service.AddressServices;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +16,6 @@ public class AddressController {
 
     //todo normal
     @PostMapping("/add")
-    @ResponseStatus(HttpStatus.CREATED)
     public Address addAddress(@RequestBody Address address) {
         return addressServices.addAddress(address);
     }
@@ -29,10 +27,10 @@ public class AddressController {
     public List<Address> findAllAddress() {
         return addressServices.getAddress();
     }
-    @GetMapping("/addressFindById{addressId}")
-    public Optional<Address> findAddressByName(@PathVariable("addressId") int addressId) {
-        return addressServices.getById(addressId);
-    }
+
+
+
+
     @DeleteMapping("/delete/{addressId}")
     public String deleteBill(@PathVariable int addressId) {
         return addressServices.deleteAddress(addressId);

@@ -8,7 +8,6 @@ import java.util.List;
 @Service
 public interface RestaurantService {
     Restaurant addRestaurant(Restaurant restaurant);
-
     List<Restaurant> saveRestaurants(List<Restaurant> restaurants);
 
     Restaurant updateRestaurant(Restaurant restaurant, Integer id);

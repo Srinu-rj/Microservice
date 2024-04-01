@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.boot.autoconfigure.amqp.RabbitConnectionDetails;
 
 @Data
 @AllArgsConstructor
@@ -22,6 +23,7 @@ public class Customer {
     public String gender;
     public String mobileNumber;
     public String email;
+
 
 //
 //    @OneToOne(cascade = CascadeType.ALL)

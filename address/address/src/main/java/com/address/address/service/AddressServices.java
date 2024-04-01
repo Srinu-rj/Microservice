@@ -16,8 +16,6 @@ public interface AddressServices {
 
     List<Address> saveAddress(List<Address> addresses);
 
-    Optional<Address> getById(int addressId);
-
     String deleteAddress(int addressId);
 
     Address updateAddress(Address updateAddress);

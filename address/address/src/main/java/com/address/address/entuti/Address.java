@@ -1,5 +1,6 @@
 package com.address.address.entuti;
 
+import com.customer.customer.entity.Customer;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,8 +21,10 @@ public class Address {
     public String state;
     public String country;
     public String pinCode;
-
-
+//
+//    @OneToMany
+//    @JoinColumn
+//    public Customer customer;
 
 }
 

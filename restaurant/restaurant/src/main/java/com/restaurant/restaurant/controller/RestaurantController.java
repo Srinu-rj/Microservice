@@ -2,6 +2,7 @@ package com.restaurant.restaurant.controller;
 
 import com.restaurant.restaurant.entity.Restaurant;
 import com.restaurant.restaurant.service.RestaurantService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,7 @@ public class RestaurantController {
     private final RestaurantService restaurantService;
 
     @PostMapping("/add")
-    public Restaurant restaurant(@RequestBody Restaurant restaurant) {
+    public Restaurant restaurant( @Valid  @RequestBody Restaurant restaurant) {
         return restaurantService.addRestaurant(restaurant);
     }
 
