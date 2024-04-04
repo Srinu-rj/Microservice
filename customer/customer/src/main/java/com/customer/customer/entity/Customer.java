@@ -5,7 +5,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.boot.autoconfigure.amqp.RabbitConnectionDetails;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -16,13 +17,16 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public int customerId;
+    public Long customerId;
 
     public String fullName;
     public Integer age;
     public String gender;
     public String mobileNumber;
     public String email;
+//    public String addressId;
+    transient private List<CustomerWithAddress>customerWithAddresses;
+
 
 
 //

@@ -3,6 +3,7 @@ package com.address.address.controller;
 import com.address.address.entuti.Address;
 import com.address.address.service.AddressServices;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,7 +28,6 @@ public class AddressController {
     public List<Address> findAllAddress() {
         return addressServices.getAddress();
     }
-
 
 
 

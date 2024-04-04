@@ -4,6 +4,7 @@ import com.customer.customer.entity.Customer;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface CustomerService {
@@ -13,11 +14,17 @@ public interface CustomerService {
 
     List<Customer> getCustomer();
 
-    void deleteCustomerByid(Integer customerId);
+    void deleteCustomerByid(Long customerId);
 
-    Customer updateCustomer(Integer customerId, Customer updateCustomer);
+    Customer updateCustomer(Long customerId, Customer updateCustomer);
 
     Customer findByEmail(String email);
 
     Customer findByMobileNumber(String mobileNumber);
+
+    Customer get(Long customerId);
+
+
+
+//    CustomerWithAddress getAddressWithCustomer(Long addressId);
 }

@@ -1,5 +1,6 @@
 package com.customer.customer.serviceImpl;
 
+import com.customer.customer.client.AddressClient;
 import com.customer.customer.entity.Customer;
 import com.customer.customer.repository.CustomerRepository;
 import com.customer.customer.service.CustomerService;
@@ -8,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -15,11 +18,12 @@ import java.util.List;
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
-
+    private final AddressClient addressClient;
 
     @Override
     public Customer add(Customer exitstcustomer) {
-        return customerRepository.save(exitstcustomer);
+        Customer customer = customerRepository.save(exitstcustomer);
+        return customer;
     }
 
     @Override
@@ -29,11 +33,17 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<Customer> getCustomer() {
-        return customerRepository.findAll();
+        List<Customer> customers = customerRepository.findAll();
+
+        List<Customer> customers1 = customers.stream().map(cust -> {
+            cust.setCustomerWithAddresses(addressClient.getAddressOfCustomer(cust.getCustomerId()));
+            return cust;
+        }).collect(Collectors.toList());
+        return customers1;
     }
 
     @Override
-    public void deleteCustomerByid(Integer customerId) {
+    public void deleteCustomerByid(Long customerId) {
 //		customerRepository.deleteById(customerId);
         if (customerId == 0 || customerId == null) {
             customerRepository.deleteById(customerId);
@@ -48,7 +58,7 @@ public class CustomerServiceImpl implements CustomerService {
 //    }
 
     @Override
-    public Customer updateCustomer(Integer customerId, Customer updateCustomer) {
+    public Customer updateCustomer(Long customerId, Customer updateCustomer) {
         Customer customer1 = customerRepository.findById(customerId).orElseThrow(() -> new IllegalArgumentException("Not found Your ID"));
 
         Customer exitstcustomer = new Customer();
@@ -70,6 +80,14 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer findByMobileNumber(String mobileNumber) {
         return customerRepository.findByMobileNumber(mobileNumber);
+    }
+
+    @Override
+    public Customer get(Long customerId) {
+        Customer customer = customerRepository.findById(customerId)
+                .orElseThrow(() -> new IllegalArgumentException("There is no id"));
+        customer.setCustomerWithAddresses(addressClient.getAddressOfCustomer(customer.getCustomerId()));
+        return customer;
     }
 
 
