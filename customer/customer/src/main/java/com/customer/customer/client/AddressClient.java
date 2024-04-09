@@ -10,7 +10,7 @@ import java.util.List;
 @FeignClient(url = "http://localhost:7009" ,value = "address")
 public interface AddressClient {
 
-    @GetMapping("/api/address/customer/{addressId}")
+    @GetMapping("/address/customer/{addressId}")
     List<CustomerWithAddress> getAddressOfCustomer(@PathVariable Long addressId);
 
 }

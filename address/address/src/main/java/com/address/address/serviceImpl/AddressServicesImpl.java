@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -15,10 +14,6 @@ public class AddressServicesImpl implements AddressServices {
 
     private final AddressRepo addressRepo;
 
-    @Override
-    public Address addAddress(Address updateAddress) {
-        return addressRepo.save(updateAddress);
-    }
 
     @Override
     public List<Address> getAddress() {
@@ -31,7 +26,6 @@ public class AddressServicesImpl implements AddressServices {
     }
 
 
-
     @Override
     public String deleteAddress(int addressId) {
         addressRepo.deleteById(addressId);
@@ -41,7 +35,7 @@ public class AddressServicesImpl implements AddressServices {
     @Override
     public Address updateAddress(Address updateAddress) {
         Address existingAddress = addressRepo.findById(updateAddress.getAddressId())
-                .orElseThrow(() -> new IllegalArgumentException("Cant't find Address ID"));
+                .orElseThrow(() -> new IllegalArgumentException("Can't find Address ID"));
 
         existingAddress.setCity(updateAddress.getCity());
         existingAddress.setArea(updateAddress.getArea());
@@ -56,6 +50,11 @@ public class AddressServicesImpl implements AddressServices {
     @Override
     public Address findByCity(String city) {
         return addressRepo.findByCity(city);
+    }
+
+    @Override
+    public Address save(Address address) {
+        return addressRepo.save(address);
     }
 
 //    @Override

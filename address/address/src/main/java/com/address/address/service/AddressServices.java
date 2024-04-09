@@ -10,7 +10,7 @@ import java.util.Optional;
 @Service
 public interface AddressServices {
 
-    Address addAddress(Address address);
+
 
     List<Address> getAddress();
 
@@ -21,6 +21,8 @@ public interface AddressServices {
     Address updateAddress(Address updateAddress);
 
     Address findByCity(String city);
+
+    Address save(Address address);
 
 //    Address findByPinCode(String pinCode);
 

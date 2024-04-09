@@ -5,18 +5,21 @@ import com.category.category.entuti.Category;
 import com.category.category.repo.CategoryRepo;
 import com.category.category.service.CategoryService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class CategoryServiceImpl implements CategoryService {
 
     private final CategoryRepo categoryRepo;
 
     @Override
     public Category addCategory(Category category) {
+        log.info("Success added Category");
         return categoryRepo.save(category);
     }
 
@@ -39,9 +42,10 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category updatecategory(Category updateCategory, Integer id) {
+
         Category exitCategory = categoryRepo.findById(updateCategory.getCategoryId())
                 .orElseThrow(() -> new IllegalArgumentException("you need to create category"));
-        exitCategory.setCategoryId(updateCategory.getCategoryId());
+
         exitCategory.setCategoryName(updateCategory.getCategoryName());
         categoryRepo.save(exitCategory);
         return exitCategory;

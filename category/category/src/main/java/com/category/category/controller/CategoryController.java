@@ -3,6 +3,7 @@ package com.category.category.controller;
 
 import com.category.category.entuti.Category;
 import com.category.category.service.CategoryService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @PostMapping("/addCategory")
-    public Category addCategory(@RequestBody Category category) {
+    public Category addCategory(@RequestBody @Valid Category category) {
         return categoryService.addCategory(category);
     }
 
@@ -27,7 +28,6 @@ public class CategoryController {
 
     @GetMapping("/get")
     public List<Category> findAllCategory() {
-
         return categoryService.getAllcategorys();
     }
 
@@ -35,6 +35,7 @@ public class CategoryController {
     public String deleteCategory(@PathVariable Integer categoryId){
         return categoryService.deleteCategoryById(categoryId);
     }
+
     @PutMapping("/update/{id}")
     public Category updateAddress(@RequestBody Category updateCategory,Integer id){
         return categoryService.updatecategory(updateCategory,id);

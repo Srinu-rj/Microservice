@@ -2,7 +2,9 @@ package com.address.address.controller;
 
 import com.address.address.entuti.Address;
 import com.address.address.service.AddressServices;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,13 +14,15 @@ import java.util.Optional;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/address")
+@Slf4j
 public class AddressController {
     private AddressServices addressServices;
 
-    //todo normal
-    @PostMapping("/add")
-    public Address addAddress(@RequestBody Address address) {
-        return addressServices.addAddress(address);
+    @PostMapping("/save")
+    public Address saveAddress(@RequestBody @Valid Address address) {
+
+        log.info("Address Are saved");
+        return addressServices.save(address);
     }
 
     @PostMapping("/addMore")
@@ -41,7 +45,7 @@ public class AddressController {
         return addressServices.updateAddress(updateAddress);
     }
 
-    @PostMapping("/findCity/{city}")
+    @GetMapping("/findCity/{city}")
     public Address findByAddressCity(@PathVariable String city) {
         return addressServices.findByCity(city);
     }

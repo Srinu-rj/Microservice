@@ -29,7 +29,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<Customer> saveCustomer(List<Customer> customers) {
         return customerRepository.saveAll(customers);
-    }
+     }
 
     @Override
     public List<Customer> getCustomer() {
@@ -45,18 +45,10 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void deleteCustomerByid(Long customerId) {
-//		customerRepository.deleteById(customerId);
-        if (customerId == 0 || customerId == null) {
-            customerRepository.deleteById(customerId);
-        } else {
-            log.info("you need to create Customer Id");
-        }
+        Customer exitsCustomer = customerRepository.findById(customerId)
+                .orElseThrow(() -> new IllegalArgumentException("Not Found"));
+        customerRepository.deleteById(customerId);
     }
-
-//    @Override
-//    public List<Customer> getAllCustomerByNative() {
-//        return customerRepository.getAllCustomerByNative();
-//    }
 
     @Override
     public Customer updateCustomer(Long customerId, Customer updateCustomer) {
