@@ -20,27 +20,29 @@ public class AddressController {
     public Address addAddress(@RequestBody Address address) {
         return addressServices.addAddress(address);
     }
+
     @PostMapping("/addMore")
     public List<Address> addAddress(@RequestBody List<Address> addresses) {
         return addressServices.saveAddress(addresses);
     }
+
     @GetMapping("/get")
     public List<Address> findAllAddress() {
         return addressServices.getAddress();
     }
 
-
-
     @DeleteMapping("/delete/{addressId}")
     public String deleteBill(@PathVariable int addressId) {
         return addressServices.deleteAddress(addressId);
     }
+
     @PutMapping("/update/{id}")
-    public Address updateAddress(@RequestBody Address updateAddress){
+    public Address updateAddress(@RequestBody Address updateAddress) {
         return addressServices.updateAddress(updateAddress);
     }
+
     @PostMapping("/findCity/{city}")
-    public Address findByAddressCity(@PathVariable String city){
+    public Address findByAddressCity(@PathVariable String city) {
         return addressServices.findByCity(city);
     }
 //

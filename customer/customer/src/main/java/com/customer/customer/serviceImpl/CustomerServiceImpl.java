@@ -34,6 +34,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<Customer> getCustomer() {
         List<Customer> customers = customerRepository.findAll();
+//        return customerRepository.findAll();
 
         List<Customer> customers1 = customers.stream().map(cust -> {
             cust.setCustomerWithAddresses(addressClient.getAddressOfCustomer(cust.getCustomerId()));
@@ -84,10 +85,12 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer get(Long customerId) {
-        Customer customer = customerRepository.findById(customerId)
+//        Customer customer = customerRepository.findById(customerId)
+        return customerRepository.findById(customerId)
+
                 .orElseThrow(() -> new IllegalArgumentException("There is no id"));
-        customer.setCustomerWithAddresses(addressClient.getAddressOfCustomer(customer.getCustomerId()));
-        return customer;
+//        customer.setCustomerWithAddresses(addressClient.getAddressOfCustomer(customer.getCustomerId()));
+//        return customer;
     }
 
 
