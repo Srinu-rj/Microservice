@@ -1,13 +1,11 @@
 package com.restaurant.restaurant.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -22,6 +20,8 @@ public class Restaurant {
     private String restaurantName;
     private String managerName;
     private String contactNumber;
+
+    transient private List<ItemDto> itemDos;
 
 
 //    @JsonIgnore

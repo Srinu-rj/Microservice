@@ -1,6 +1,5 @@
 package com.customer.customer.serviceImpl;
 
-import com.customer.customer.client.AddressClient;
 import com.customer.customer.entity.Customer;
 import com.customer.customer.repository.CustomerRepository;
 import com.customer.customer.service.CustomerService;
@@ -18,7 +17,7 @@ import java.util.stream.Collectors;
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
-    private final AddressClient addressClient;
+//    private final AddressClient addressClient;
 
     @Override
     public Customer add(Customer exitstcustomer) {
@@ -29,18 +28,19 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<Customer> saveCustomer(List<Customer> customers) {
         return customerRepository.saveAll(customers);
-     }
+    }
 
     @Override
     public List<Customer> getCustomer() {
-        List<Customer> customers = customerRepository.findAll();
-//        return customerRepository.findAll();
+//        List<Customer> customers = customerRepository.findAll();
+        return customerRepository.findAll();
 
-        List<Customer> customers1 = customers.stream().map(cust -> {
-            cust.setCustomerWithAddresses(addressClient.getAddressOfCustomer(cust.getCustomerId()));
-            return cust;
-        }).collect(Collectors.toList());
-        return customers1;
+//        //todo connect to the address id with Json
+//        List<Customer> customers1 = customers.stream().map(cust -> {
+//            cust.setCustomerWithAddresses(addressClient.getAddressOfCustomer(cust.getCustomerId()));
+//            return cust;
+//        }).collect(Collectors.toList());
+//        return customers1;
     }
 
     @Override
@@ -77,11 +77,11 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer get(Long customerId) {
+        return customerRepository.findById(customerId).orElse(null);
 //        Customer customer = customerRepository.findById(customerId)
-        return customerRepository.findById(customerId)
-
-                .orElseThrow(() -> new IllegalArgumentException("There is no id"));
+//                .orElseThrow(() -> new IllegalArgumentException("There is no id"));
 //        customer.setCustomerWithAddresses(addressClient.getAddressOfCustomer(customer.getCustomerId()));
+//
 //        return customer;
     }
 

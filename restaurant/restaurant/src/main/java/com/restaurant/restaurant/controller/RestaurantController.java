@@ -30,6 +30,10 @@ public class RestaurantController {
         return restaurantService.getAllRestants();
     }
 
+    @GetMapping("/getId/{restaurantId}")
+    public Restaurant getIdRestaurant(@PathVariable Integer restaurantId){
+        return restaurantService.getIdByRestaurant(restaurantId);
+    }
     @PutMapping("/update/{id}")
     public Restaurant updateRestaurant(@RequestBody Restaurant restaurant, @PathVariable Integer id) {
         return restaurantService.updateRestaurant(restaurant,id);

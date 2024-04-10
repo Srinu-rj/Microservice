@@ -18,4 +18,5 @@ public interface RestaurantService {
 
     List<Restaurant> getAllRestants();
 
+    Restaurant getIdByRestaurant(Integer restaurantId);
 }

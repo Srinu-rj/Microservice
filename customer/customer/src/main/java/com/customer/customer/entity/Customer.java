@@ -24,17 +24,8 @@ public class Customer {
     public String gender;
     public String mobileNumber;
     public String email;
-//    public String addressId;
+
     transient private List<CustomerWithAddress>customerWithAddresses;
 
 
-
-//
-//    @OneToOne(cascade = CascadeType.ALL)
-//    public Address address;
-
-
-//	@OneToOne(cascade = CascadeType.ALL)
-//	@JsonIgnore
-//	public FoodCart foodCart;
 }
