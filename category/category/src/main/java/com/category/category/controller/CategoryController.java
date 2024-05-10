@@ -5,6 +5,7 @@ import com.category.category.entuti.Category;
 import com.category.category.service.CategoryService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/category")
+@Slf4j
 public class CategoryController {
 
     private final CategoryService categoryService;
@@ -26,16 +28,21 @@ public class CategoryController {
         return categoryService.saveCategory(categories);
     }
 
+    @GetMapping("/get/{categoryId}")
+    public Category categoryByID(@RequestParam int categoryId){
+        return categoryService.categoryByID(categoryId);
+    }
     @GetMapping("/get")
     public List<Category> findAllCategory() {
         return categoryService.getAllcategorys();
     }
 
-    @DeleteMapping("/delete/{categoryId}")
-    public String deleteCategory(@PathVariable Integer categoryId){
-        return categoryService.deleteCategoryById(categoryId);
-    }
+    @DeleteMapping("/findMobile/{cartId}")
+    public String delete(@PathVariable("cartId") String cartId) {
+        log.info("foodCart delete",cartId);
+        return categoryService.deleteByID(cartId);
 
+    }
     @PutMapping("/update/{id}")
     public Category updateAddress(@RequestBody Category updateCategory,Integer id){
         return categoryService.updatecategory(updateCategory,id);

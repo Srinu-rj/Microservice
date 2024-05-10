@@ -1,59 +1,50 @@
 package com.address.address.controller;
 
 import com.address.address.entuti.Address;
-import com.address.address.service.AddressServices;
-import jakarta.validation.Valid;
+import com.address.address.service.AddressService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api/address")
+@RequiredArgsConstructor
 @Slf4j
 public class AddressController {
-    private AddressServices addressServices;
+
+    private final AddressService addressService;
+
 
     @PostMapping("/save")
-    public Address saveAddress(@RequestBody @Valid Address address) {
-
-        log.info("Address Are saved");
-        return addressServices.save(address);
+    public Address createAddress(@RequestBody Address address) {
+        return addressService.createAddress(address);
     }
 
-    @PostMapping("/addMore")
-    public List<Address> addAddress(@RequestBody List<Address> addresses) {
-        return addressServices.saveAddress(addresses);
+    @GetMapping("/fetch/{addressId}")
+    public Optional<Address> getAddressById(@PathVariable("addressId") int addressId) {
+        return addressService.getAddressById(addressId);
     }
 
+    @GetMapping
+    public List<Address> getAllAddresses() {
+        return addressService.getAllAddresses();
+    }
     @GetMapping("/get")
     public List<Address> findAllAddress() {
-        return addressServices.getAddress();
+        return addressService.getAddress();
     }
 
-    @DeleteMapping("/delete/{addressId}")
-    public String deleteBill(@PathVariable int addressId) {
-        return addressServices.deleteAddress(addressId);
+    @GetMapping("/findPinCode/{pinCode}")
+    public Address findByPinCode(@PathVariable int pinCode) {
+        return addressService.findBypincode(pinCode);
     }
 
-    @PutMapping("/update/{id}")
-    public Address updateAddress(@RequestBody Address updateAddress) {
-        return addressServices.updateAddress(updateAddress);
+    @PutMapping("/update/{addressId}")
+    public Address updateAddress(@RequestParam int addressId ,@RequestBody Address exitsAddress ){
+        return addressService.updateAddressById(addressId,exitsAddress);
     }
-
-    @GetMapping("/findCity/{city}")
-    public Address findByAddressCity(@PathVariable String city) {
-        return addressServices.findByCity(city);
-    }
-//
-//    @PostMapping("/findByPinCode/{pinCode}")
-//    public Address findByPinCode (@PathVariable String pinCode){
-//        return addressServices.findByPinCode(pinCode);
-//    }
-
 
 }

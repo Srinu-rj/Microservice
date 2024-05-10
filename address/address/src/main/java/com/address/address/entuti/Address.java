@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "address")
 public class Address {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     public int addressId;
 
     public String area;
@@ -20,10 +20,7 @@ public class Address {
     public String state;
     public String country;
     public String pinCode;
-//
-//    @OneToMany
-//    @JoinColumn
-//    public Customer customer;
+
 
 }
 

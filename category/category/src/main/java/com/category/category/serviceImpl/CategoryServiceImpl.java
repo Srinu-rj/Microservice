@@ -34,11 +34,7 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryRepo.findAll();
     }
 
-    @Override
-    public String deleteCategoryById(Integer categoryId) {
-        categoryRepo.findById(categoryId);
-        return "categoryID Deleted";
-    }
+
 
     @Override
     public Category updatecategory(Category updateCategory, Integer id) {
@@ -49,6 +45,17 @@ public class CategoryServiceImpl implements CategoryService {
         exitCategory.setCategoryName(updateCategory.getCategoryName());
         categoryRepo.save(exitCategory);
         return exitCategory;
+    }
+
+    @Override
+    public Category categoryByID(int categoryId) {
+        return categoryRepo.findById(categoryId).orElseThrow(null);
+    }
+
+    @Override
+    public String deleteByID(String cartId) {
+        categoryRepo.deleteById(Integer.valueOf(cartId));
+        return "cart ID Deleted Success!";
     }
 }
 

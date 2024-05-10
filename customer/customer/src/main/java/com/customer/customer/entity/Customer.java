@@ -2,19 +2,20 @@ package com.customer.customer.entity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "customer")
 public class Customer {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long customerId;
@@ -25,7 +26,5 @@ public class Customer {
     public String mobileNumber;
     public String email;
 
-    transient private List<CustomerWithAddress>customerWithAddresses;
-
-
+//    transient private List<CustomerWithAddress> customerWithAddresses;
 }

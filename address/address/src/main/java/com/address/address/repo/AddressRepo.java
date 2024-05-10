@@ -4,8 +4,13 @@ import com.address.address.entuti.Address;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+import java.util.UUID;
+
 @Repository
 public interface AddressRepo extends JpaRepository<Address,Integer> {
-    Address findByCity(String city);
+
+    Address findByPinCode(String pinCode);
+
 
 }

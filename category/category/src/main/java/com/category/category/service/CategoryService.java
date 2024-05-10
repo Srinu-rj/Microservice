@@ -15,7 +15,10 @@ public interface CategoryService {
 
     List<Category> getAllcategorys();
 
-    String deleteCategoryById(Integer categoryId);
 
     Category updatecategory(Category updateCategory, Integer id);
+
+    Category categoryByID(int categoryId);
+
+    String deleteByID(String cartId);
 }

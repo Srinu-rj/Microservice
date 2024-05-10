@@ -2,20 +2,22 @@ package com.customer.customer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 
 @SpringBootApplication
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 //@EnableFeignClients
 public class CustomerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CustomerApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CustomerApplication.class, args);
+        System.out.println("CUSTOMER SERVICE");
+    }
 
-//	@Bean
-//	public RestTemplate restTemplate(){
-//		return new RestTemplate();
-//	}
+
+//    @Bean
+//    @LoadBalanced
+//    public RestTemplate restTemplate() {
+//        return new RestTemplate();
+//    }
 }
