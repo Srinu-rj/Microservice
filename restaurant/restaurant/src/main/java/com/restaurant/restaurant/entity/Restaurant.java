@@ -21,7 +21,7 @@ public class Restaurant {
     private String managerName;
     private String contactNumber;
 
-    transient private List<ItemDto> itemDos;
+//    transient private List<ItemDto> itemDos;
 
 
 //    @JsonIgnore

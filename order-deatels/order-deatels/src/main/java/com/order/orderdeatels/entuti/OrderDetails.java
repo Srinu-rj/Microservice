@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -18,18 +20,22 @@ import java.time.LocalDateTime;
 public class OrderDetails {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    public Integer orderId;
-    public LocalDateTime orderDate;
-    public String orderStatus;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer orderId;
+    private LocalDateTime orderDate;
+    private String orderStatus;
+//    @CreationTimestamp
+//    private LocalDateTime dateCreated;
+//    @UpdateTimestamp
+//    private LocalDateTime dateUpdate;
 
 
 //    @OneToOne(cascade = CascadeType.ALL)
 //    @JsonIgnore
-//    public FoodCart cart;
+//    private FoodCart cart;
 
 
 //    @OneToOne(cascade = CascadeType.ALL)
 //    @JsonIgnore
-//    public   Bill bill;
+//    private   Bill bill;
 }

@@ -10,6 +10,7 @@ public class BillApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BillApplication.class, args);
+		System.out.println("BILL SERVICE");
 	}
 
 }

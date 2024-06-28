@@ -23,7 +23,7 @@ public class SwaggerConfig {
 						.license(new License().name("License")
 								.url("/"))).externalDocs(new ExternalDocumentation()
 						.description("E-Commerce App Documentation")
-						.url("http://localhost:7003/swagger-ui/index.html"));
+						.url(""));
 	}
 
 

@@ -14,7 +14,7 @@ public class SwaggerConfig {
 	@Bean
 	public OpenAPI springShopOpenAPI() {
 		return new OpenAPI()
-				.info(new Info().title("Restaurant Application")
+				.info(new Info().title("RESTAURANT SERVICE")
 						.description("Backend APIs for E-Commerce app")
 						.version("v1.0.0").contact(new Contact().name("srinu")
 								.url("https://github.com/Srinu-rj")
@@ -25,6 +25,4 @@ public class SwaggerConfig {
 						.description("E-Commerce App Documentation")
 						.url("http://localhost:7002/swagger-ui/index.html"));
 	}
-
-
 }
