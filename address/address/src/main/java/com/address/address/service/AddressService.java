@@ -16,7 +16,7 @@ public interface AddressService {
 
     Optional<Address> findByAddressIdBy(int addressId);
 
-    Address updateAddressById(int addressId, Address exitsAddress);
+    Address updateAddressById(int addressId, Address updateAddress);
 
     Address createAddress(Address address);
 
@@ -24,4 +24,7 @@ public interface AddressService {
     List<Address> getAllAddresses();
 
     Optional<Address> getAddressById(int addressId);
+
+    String deleteAddress(int addressId);
+
 }

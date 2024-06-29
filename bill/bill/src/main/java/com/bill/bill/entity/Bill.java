@@ -20,7 +20,7 @@ public class Bill {
     public Integer billId;
     public LocalDateTime billDate;
     public Double totalCost;
-    public Integer totalItem;
+    public int totalItem;
 
 
 //    @OneToOne(cascade = CascadeType.ALL)

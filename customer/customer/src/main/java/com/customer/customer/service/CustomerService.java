@@ -1,6 +1,7 @@
 package com.customer.customer.service;
 
 import com.customer.customer.entity.Customer;
+import com.customer.customer.exception.CustomerNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,5 +16,12 @@ public interface CustomerService {
 
     Customer findByEmail(String email);
 
-    Customer findByMobileNumber(String mobileNumber);
+    Customer findById(long customerId);
+
+    Customer updateCustomer(Customer customer, Long customerId);
+
+//    Customer updateCustomer(Customer customer, long customerId) throws CustomerNotFoundException;
+
+
+//    Customer findByMobileNumber(String mobileNumber);
 }

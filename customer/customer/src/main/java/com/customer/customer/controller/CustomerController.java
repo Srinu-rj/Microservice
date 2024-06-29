@@ -1,6 +1,7 @@
 package com.customer.customer.controller;
 
 import com.customer.customer.entity.Customer;
+import com.customer.customer.exception.CustomerNotFoundException;
 import com.customer.customer.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,26 +18,45 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @PostMapping
-    public Customer addCustomer(@RequestBody Customer customer){
+    public Customer addCustomer(@RequestBody Customer customer) {
         return customerService.saveCustomer(customer);
     }
 
     @PostMapping("/save/list")
-    public List<Customer> saveListCustomer(@RequestBody List<Customer> customers){
-        return  customerService.saveListOf(customers);
+    public List<Customer> saveListCustomer(@RequestBody List<Customer> customers) {
+        return customerService.saveListOf(customers);
     }
+
+    //todo get list of Customer List
     @GetMapping("/get")
     public List<Customer> findAllCustomers() {
         return customerService.getCustomer();
     }
+
+    @GetMapping("/findById/{customerId}")
+    public Customer findByCustomerID(@PathVariable long customerId) {
+        return customerService.findById(customerId);
+    }
+
     @GetMapping("/findEmail/{email}")
-    public Customer findByCustomerEmail(@PathVariable String email){
+    public Customer findByCustomerEmail(@PathVariable String email) {
         return customerService.findByEmail(email);
     }
-    @GetMapping("/findMobile/{mobileNumber}")
-    public Customer findByMobileNumber(@PathVariable String mobileNumber){
-        return customerService.findByMobileNumber(mobileNumber);
+
+    //    @PutMapping("/update/{customerId}")
+//    public Customer updateCustomerDeatels(@PathVariable long customerId, @RequestBody Customer customer ) throws CustomerNotFoundException {
+//        return customerService.updateCustomer(customerId,customer);
+//    }
+    @PutMapping("/update/{customerId}")
+    public Customer updateCustomer(@RequestBody Customer customer, @PathVariable Long customerId) {
+        return customerService.updateCustomer(customer,customerId);
     }
+
+
+//    @GetMapping("/findMobile/{mobileNumber}")
+//    public Customer findByMobileNumber(@PathVariable String mobileNumber){
+//        return customerService.findByMobileNumber(mobileNumber);
+//    }
 
 
 }

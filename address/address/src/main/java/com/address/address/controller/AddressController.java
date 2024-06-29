@@ -2,6 +2,7 @@ package com.address.address.controller;
 
 import com.address.address.entuti.Address;
 import com.address.address.service.AddressService;
+import jakarta.ws.rs.Path;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -43,8 +44,12 @@ public class AddressController {
     }
 
     @PutMapping("/update/{addressId}")
-    public Address updateAddress(@RequestParam int addressId ,@RequestBody Address exitsAddress ){
-        return addressService.updateAddressById(addressId,exitsAddress);
+    public Address updateAddress(@RequestParam int addressId ,@RequestBody Address updateAddress ){
+        return addressService.updateAddressById(addressId,updateAddress);
     }
 
+    @DeleteMapping("/delete/{addressId}")
+    public String deleteAddress(@PathVariable int addressId){
+        return addressService.deleteAddress(addressId);
+    }
 }

@@ -34,18 +34,19 @@ public class AddressServiceIMpl implements AddressService {
     }
 
     @Override
-    public Address updateAddressById(int addressId, Address exitsAddress) {
-        Address address = addressRepo.findById(addressId)
+    public Address updateAddressById(int addressId, Address updateAddress) {
+        Address exitAddress = addressRepo.findById(addressId)
                 .orElseThrow(() -> new IllegalArgumentException("Need to Create Address,Not Found"));
 
-        Address address1 = new Address();
+        exitAddress.setArea(updateAddress.getArea());
+        exitAddress.setCity(updateAddress.getCity());
+        exitAddress.setState(updateAddress.getState());
+        exitAddress.setCountry(updateAddress.getCountry());
+        exitAddress.setPinCode(updateAddress.getPinCode());
 
-        address1.setArea(exitsAddress.getArea());
-        address1.setCity(exitsAddress.getCity());
-        address1.setState(exitsAddress.getState());
-        address1.setCountry(exitsAddress.getCountry());
-        address1.setPinCode(exitsAddress.getPinCode());
-        return addressRepo.save(address1);
+        addressRepo.save(exitAddress);
+
+        return exitAddress;
     }
 
     @Override
@@ -61,6 +62,12 @@ public class AddressServiceIMpl implements AddressService {
     @Override
     public Optional<Address> getAddressById(int addressId) {
         return addressRepo.findById(addressId);
+    }
+
+    @Override
+    public String deleteAddress(int addressId) {
+        addressRepo.deleteById(addressId);
+        return "addressId deleted success!!!!";
     }
 
 

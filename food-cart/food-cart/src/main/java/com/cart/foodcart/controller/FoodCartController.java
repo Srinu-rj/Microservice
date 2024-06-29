@@ -32,7 +32,6 @@ public class FoodCartController {
     public String deleteFoodid(@PathVariable("cartId") Integer cartId ){
         return cartService.deleteId(cartId);
     }
-
     @PutMapping("/update/{id}")
     public FoodCart updateFoodcart(@RequestBody FoodCart foodCart,@RequestParam Integer id){
         return cartService.updateFoodCartId(foodCart,id);
