@@ -10,6 +10,7 @@ public class FoodCartApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FoodCartApplication.class, args);
+		System.out.println("FOOD SERVICE");
 	}
 
 }

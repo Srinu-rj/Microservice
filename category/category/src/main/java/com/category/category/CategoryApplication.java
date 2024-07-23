@@ -10,6 +10,7 @@ public class CategoryApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CategoryApplication.class, args);
+		System.out.println("CATEGORY SERVICE");
 	}
 
 }
