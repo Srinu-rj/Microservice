@@ -70,5 +70,10 @@ public class AddressServiceIMpl implements AddressService {
         return "addressId deleted success!!!!";
     }
 
+//    @Override
+//    public List<Address> getAddressService(int addressId) {
+//         return addressRepo.getAddressService(addressId);
+//    }
+
 
 }

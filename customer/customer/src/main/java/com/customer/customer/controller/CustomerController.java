@@ -34,7 +34,7 @@ public class CustomerController {
     }
 
     @GetMapping("/findById/{customerId}")
-    public Customer findByCustomerID(@PathVariable long customerId) {
+    public Customer findByCustomerID(@PathVariable int customerId) throws CustomerNotFoundException {
         return customerService.findById(customerId);
     }
 
@@ -43,20 +43,11 @@ public class CustomerController {
         return customerService.findByEmail(email);
     }
 
-    //    @PutMapping("/update/{customerId}")
-//    public Customer updateCustomerDeatels(@PathVariable long customerId, @RequestBody Customer customer ) throws CustomerNotFoundException {
-//        return customerService.updateCustomer(customerId,customer);
-//    }
+
     @PutMapping("/update/{customerId}")
-    public Customer updateCustomer(@RequestBody Customer customer, @PathVariable Long customerId) {
+    public Customer updateCustomer(@RequestBody Customer customer, @PathVariable int customerId) {
         return customerService.updateCustomer(customer,customerId);
     }
-
-
-//    @GetMapping("/findMobile/{mobileNumber}")
-//    public Customer findByMobileNumber(@PathVariable String mobileNumber){
-//        return customerService.findByMobileNumber(mobileNumber);
-//    }
 
 
 }

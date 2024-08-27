@@ -16,12 +16,8 @@ public interface CustomerService {
 
     Customer findByEmail(String email);
 
-    Customer findById(long customerId);
+    Customer findById(int customerId) throws CustomerNotFoundException;
 
-    Customer updateCustomer(Customer customer, Long customerId);
+    Customer updateCustomer(Customer customer, int customerId);
 
-//    Customer updateCustomer(Customer customer, long customerId) throws CustomerNotFoundException;
-
-
-//    Customer findByMobileNumber(String mobileNumber);
 }

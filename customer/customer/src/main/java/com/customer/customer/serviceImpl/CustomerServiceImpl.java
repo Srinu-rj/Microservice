@@ -1,5 +1,6 @@
 package com.customer.customer.serviceImpl;
 
+
 import com.customer.customer.entity.Customer;
 import com.customer.customer.exception.CustomerNotFoundException;
 import com.customer.customer.repository.CustomerRepository;
@@ -8,12 +9,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
+//    private final AddressClientInterface addressClientInterface;
 
     @Override
     public Customer saveCustomer(Customer customer) {
@@ -27,7 +31,18 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<Customer> getCustomer() {
-        return customerRepository.findAll();
+        List<Customer> customer= customerRepository.findAll();
+        return customer;
+
+
+//        List<Customer> customer= customerRepository.findAll();
+//        customer.stream().map(cust->{
+//            //TODO IMPORANT LOGIC
+//            cust.setAddresssClients(addressClientInterface.getAddressService(cust.getCustomerId()));
+//
+//            return cust;
+//        }).collect(Collectors.toList());
+//        return customer;
     }
 
     @Override
@@ -36,13 +51,16 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer findById(long customerId) {
-        return customerRepository.findById(customerId)
-                .orElseThrow(() -> new RuntimeException("customerId Not found"));
+    public Customer findById(int customerId) throws CustomerNotFoundException {
+        Optional<Customer> opt = customerRepository.findById(customerId);
+        if (opt.isPresent()) {
+            return opt.get();
+        }
+        throw new CustomerNotFoundException("Not Found");
     }
 
     @Override
-    public Customer updateCustomer(Customer customer, Long customerId) {
+    public Customer updateCustomer(Customer customer, int customerId) {
 //        todo we are difine customerId are exits are not
         Customer exitsCustomer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new IllegalArgumentException("customerId Not found create "));

@@ -5,9 +5,11 @@ import com.restaurant.restaurant.entity.Restaurant;
 import com.restaurant.restaurant.repository.RestaurantRepository;
 import com.restaurant.restaurant.service.RestaurantService;
 import lombok.RequiredArgsConstructor;
+import org.aspectj.weaver.IClassFileProvider;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -70,15 +72,32 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public Restaurant updateRestaurant(Restaurant restaurant, Integer id) {
-        Restaurant exits = restaurantRepository.findById(restaurant.getRestaurantId())
-                .orElseThrow(() -> new RuntimeException("There iss no Id Please Create"));
+        Restaurant exitsRestaurant = getIdByRestaurant(id);
+        //todo this is for only custome update
+        if (exitsRestaurant.getManagerName() != null) {
+            exitsRestaurant.setManagerName(restaurant.getManagerName());
+        }
 
-        Restaurant restaurant1 = new Restaurant();
-        restaurant1.setRestaurantId(restaurant.getRestaurantId());
-        restaurant1.setRestaurantName(restaurant.getRestaurantName());
-        restaurant1.setManagerName(restaurant.getManagerName());
-        restaurant1.setContactNumber(restaurant.getContactNumber());
-        return restaurantRepository.save(restaurant1);
+        if (exitsRestaurant.getContactNumber() != null) {
+            exitsRestaurant.setContactNumber(restaurant.getContactNumber());
+        }
+
+        if (exitsRestaurant.getRestaurantName() != null) {
+            exitsRestaurant.setRestaurantName(restaurant.getRestaurantName());
+        }
+        return restaurantRepository.save(exitsRestaurant);
+
+        //todo this code also work but i need to implet only custom files
+//        Restaurant exits = restaurantRepository.findById(restaurant.getRestaurantId())
+//                .orElseThrow(() -> new RuntimeException("There iss no Id Please Create"));
+//
+//        Restaurant restaurant1 = new Restaurant();
+//        restaurant1.setRestaurantId(restaurant.getRestaurantId());
+//        restaurant1.setRestaurantName(restaurant.getRestaurantName());
+//        restaurant1.setManagerName(restaurant.getManagerName());
+//        restaurant1.setContactNumber(restaurant.getContactNumber());
+//        return restaurantRepository.save(restaurant1);
+
 
     }
 

@@ -33,6 +33,7 @@ public class AddressController {
     public List<Address> getAllAddresses() {
         return addressService.getAllAddresses();
     }
+
     @GetMapping("/get")
     public List<Address> findAllAddress() {
         return addressService.getAddress();
@@ -43,13 +44,19 @@ public class AddressController {
         return addressService.findBypincode(pinCode);
     }
 
+//    @GetMapping("address/get/{addressId}")
+//    public List<Address> getAllAddressByCustomer(@PathVariable int addressId){
+//        return addressService.getAddressService(addressId);
+//    }
+
+
     @PutMapping("/update/{addressId}")
-    public Address updateAddress(@RequestParam int addressId ,@RequestBody Address updateAddress ){
-        return addressService.updateAddressById(addressId,updateAddress);
+    public Address updateAddress(@RequestParam int addressId, @RequestBody Address updateAddress) {
+        return addressService.updateAddressById(addressId, updateAddress);
     }
 
     @DeleteMapping("/delete/{addressId}")
-    public String deleteAddress(@PathVariable int addressId){
+    public String deleteAddress(@PathVariable int addressId) {
         return addressService.deleteAddress(addressId);
     }
 }

@@ -10,7 +10,7 @@ import java.lang.annotation.Native;
 import java.util.List;
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer, Long> {
+public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     @Query("SELECT c  FROM  Customer c WHERE c.email =:email")
     Customer findByEmail(@Param("email") String email);
 
