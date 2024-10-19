@@ -123,6 +123,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>spring-restaurant-services</finalName>
     </build>
 
 </project>

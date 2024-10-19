@@ -126,6 +126,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>spring-category-services</finalName>
 	</build>
 
 </project>

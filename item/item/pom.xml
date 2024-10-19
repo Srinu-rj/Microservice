@@ -119,6 +119,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>spring-item-services</finalName>
 	</build>
 
 </project>

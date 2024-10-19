@@ -119,6 +119,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>spring-customer-services</finalName>
     </build>
 
 </project>

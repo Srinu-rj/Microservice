@@ -118,6 +118,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>spring-foodcart-services</finalName>
     </build>
 
 </project>
